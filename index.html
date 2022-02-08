@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&family=Rubik&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>El Clima</title>
+    <link rel="icon" href="assets/icon.ico" />
+    <meta
+      name="description"
+      content="El clima en tu ciudad ahora, Prevision del clima de los proximos 5 dias, detalles climaticos del dia"
+    />
+    <link
+      rel="canonical"
+      href="https://franco-navarro.github.io/El-Clima"
+    />
+    <link
+      rel="favicon"
+      href="https://franco-navarro.github.io/El-Clima/assets/favicon.jpg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://franco-navarro.github.io/El-Clima/assets/favicon.jpg"
+    />
+    <meta name="theme-color" content="#F7F7F7" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" name="twitter:title" content="El Clima" />
+    <meta
+      property="og:image"
+      name="twitter:image"
+      content="https://franco-navarro.github.io/El-Clima/assets/favicon.jpg"
+    />
+    <meta
+      property="og:url"
+      name="twitter:url"
+      content="https://franco-navarro.github.io/El-Clima"
+    />
+    <meta
+      property="og:description"
+      name="twitter:description"
+      content="El clima en tu ciudad, Prevision del clima de los proximos 5 dias, detalles climaticos del dia"
+    />
+    <link
+      rel="canonical"
+      href="https://franco-navarro.github.io/El-Clima"
+    />
+    
+  </head>
+
+  <body class="body">
+    <header class="header">
+      <section class="container">
+        <nav class="header-nav">
+          <div class="search-bar">
+            <input type="text" class="search-input" id="search-input" placeholder="Buscar Localizacion">
+            <button id="search-input-button">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.7812 13.8438L12.6562 10.7188C12.5 10.5938 12.3125 10.5 12.125 10.5H11.625C12.4688 9.40625 13 8.03125 13 6.5C13 2.9375 10.0625 0 6.5 0C2.90625 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.5 13C8 13 9.375 12.5 10.5 11.625V12.1562C10.5 12.3438 10.5625 12.5312 10.7188 12.6875L13.8125 15.7812C14.125 16.0938 14.5938 16.0938 14.875 15.7812L15.75 14.9062C16.0625 14.625 16.0625 14.1562 15.7812 13.8438ZM6.5 10.5C4.28125 10.5 2.5 8.71875 2.5 6.5C2.5 4.3125 4.28125 2.5 6.5 2.5C8.6875 2.5 10.5 4.3125 10.5 6.5C10.5 8.71875 8.6875 10.5 6.5 10.5Z"/>
+            </svg>
+            </button>
+          </div>
+          <aside class="location">
+            <button class="location-button" id="location-search">
+              <svg width="33" height="33" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.3396 21.5881C19.2851 21.5881 21.6729 19.2002 21.6729 16.2547C21.6729 13.3092 19.2851 10.9214 16.3396 10.9214C13.394 10.9214 11.0062 13.3092 11.0062 16.2547C11.0062 19.2002 13.394 21.5881 16.3396 21.5881Z"/>
+                <path d="M17.6729 5.68005V2.92139H15.0062V5.68005C12.66 5.97963 10.4795 7.04962 8.80699 8.72215C7.13445 10.3947 6.06447 12.5751 5.76489 14.9214H3.00623V17.5881H5.76489C6.06403 19.9345 7.13387 22.1152 8.80649 23.7878C10.4791 25.4604 12.6598 26.5302 15.0062 26.8294V29.5881H17.6729V26.8294C20.0194 26.5305 22.2002 25.4607 23.8729 23.788C25.5455 22.1154 26.6153 19.9346 26.9142 17.5881H29.6729V14.9214H26.9142C26.6151 12.5749 25.5452 10.3943 23.8726 8.72165C22.2 7.04904 20.0193 5.97919 17.6729 5.68005V5.68005ZM16.3396 24.2547C11.9276 24.2547 8.33956 20.6667 8.33956 16.2547C8.33956 11.8427 11.9276 8.25472 16.3396 8.25472C20.7516 8.25472 24.3396 11.8427 24.3396 16.2547C24.3396 20.6667 20.7516 24.2547 16.3396 24.2547Z" />
+                </svg>
+            </button>
+          </aside>
+        </nav>
+      </section>
+    </header>
+
+    <div class="err hidden" id="no-location">
+      <p class="err-p">Ciudad no encontrada</p>
+    </div>
+
+    <section class="today-home section">
+      <div class="container">
+        <article class="today">
+          <div class="today-location">
+            <h1 id="actually-location" >Nueva York / US</h1>
+            <h3 id="today-date">Enero 28</h3>
+          </div>
+          <img src="assets/01.svg" alt="" class="today-img" id="today-weather-img">
+          <div class="today-details">
+            <p id="actually-temp"  class="today-details-degrees">0º C</p>
+            <p class="today-details-state" id="today-weather">Soleado</p>
+            <p id="today-min-max" class="today-details-temperature">Min 0º / 0º Max</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="next-days section">
+      <div class="container">
+        <h2>Proximos Dias</h2>
+        <article class="card-day">
+          <img src="assets/01.svg" alt="" class="card-day-img" id="day-weather-img">
+          <div class="card-day-details">
+            <h3 class="card-day-date" id="day-date">Enero 29</h3>
+            <p class="card-day-temperature" id="day-min-max">Min 16º / 29º Max</p>
+          </div>
+        </article>
+        <article class="card-day">
+          <img src="assets/02.svg" alt="" class="card-day-img" id="day-weather-img">
+          <div class="card-day-details">
+            <h3 class="card-day-date" id="day-date">Enero 30</h3>
+            <p class="card-day-temperature" id="day-min-max">Min 16º / 29º Max</p>
+          </div>
+        </article>
+        <article class="card-day">
+          <img src="assets/03.svg" alt="" class="card-day-img" id="day-weather-img">
+          <div class="card-day-details">
+            <h3 class="card-day-date" id="day-date">Enero 31</h3>
+            <p class="card-day-temperature" id="day-min-max">Min 16º / 29º Max</p>
+          </div>
+        </article>
+        <article class="card-day">
+          <img src="assets/04.svg" alt="" class="card-day-img" id="day-weather-img">
+          <div class="card-day-details">
+            <h3 class="card-day-date" id="day-date">Febrero 1</h3>
+            <p class="card-day-temperature" id="day-min-max">Min 16º / 29º Max</p>
+          </div>
+        </article>
+        <article class="card-day">
+          <img src="assets/09.svg" alt="" class="card-day-img" id="day-weather-img">
+          <div class="card-day-details">
+            <h3 class="card-day-date" id="day-date">Febrero 2</h3>
+            <p class="card-day-temperature" id="day-min-max">Min 16º / 29º Max</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cards-today section">
+      <div class="container">
+        <h2>Detalles de Hoy</h2>
+        <div class="card-today-container">
+          <article class="card-today">
+            <h3 class="card-today-title">Presion atmosferica</h3>
+            <p class="card-today-details" id="today-pressure">1012.6 hPa</p>
+          </article>
+          <article class="card-today">
+            <h3 class="card-today-title">Humedad</h3>
+            <p class="card-today-details" id="today-humidity">80%</p>
+          </article>
+          <article class="card-today">
+            <h3 class="card-today-title">Viento</h3>
+            <p class="card-today-details" id="today-wind">SE 2.3 km</p>
+          </article>
+          <article class="card-today">
+            <h3 class="card-today-title">Índice UV máx</h3>
+            <p class="card-today-details" id="today-uvi">0 Baja</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <aside>
+        <a href="https://github.com/Franco-Navarro" target="_blank">
+          <svg
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M16.405 0.5C7.34393 0.5 0 7.84393 0 16.905C0 24.1519 4.69913 30.3017 11.219 32.4728C12.0398 32.6208 12.3358 32.1159 12.3358 31.6817C12.3358 31.2919 12.3227 30.2589 12.3177 28.8921C7.75348 29.8823 6.78964 26.6914 6.78964 26.6914C6.0462 24.7966 4.96887 24.2917 4.96887 24.2917C3.48035 23.2736 5.08236 23.2966 5.08236 23.2966C6.73043 23.4117 7.59393 24.9874 7.59393 24.9874C9.05779 27.4941 11.4361 26.7704 12.3671 26.351C12.5168 25.2901 12.9444 24.5664 13.4115 24.1568C9.76997 23.744 5.94093 22.3361 5.94093 16.0481C5.94093 14.2602 6.58075 12.7931 7.62519 11.6483C7.45906 11.2322 6.89161 9.56272 7.78802 7.30609C7.78802 7.30609 9.1647 6.86364 12.298 8.9854C13.6362 8.62137 15.0166 8.43555 16.4034 8.43276C17.7902 8.43501 19.1707 8.62084 20.5087 8.9854C23.6437 6.862 25.0187 7.30609 25.0187 7.30609C25.9151 9.56272 25.3526 11.2322 25.1815 11.6483C26.2342 12.7931 26.8658 14.2586 26.8658 16.0481C26.8658 22.3525 23.0335 23.7374 19.3788 24.1437C19.9627 24.6503 20.489 25.6503 20.489 27.1799C20.489 29.3741 20.4692 31.1438 20.4692 31.6817C20.4692 32.1208 20.762 32.6307 21.5992 32.4695C28.1158 30.2951 32.81 24.1502 32.81 16.905C32.81 7.84393 25.4661 0.5 16.405 0.5Z"
+            />
+          </svg>
+          <p>Github</p>
+        </a>
+        <a href="https://www.instagram.com/franco.s.navarro" target="_blank">
+          <svg
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M30.0712 3.18274C30.8756 3.98686 31.5033 4.95009 31.914 6.01076C32.3876 7.26913 32.6403 8.59984 32.661 9.94422C32.7603 11.6421 32.7603 12.1922 32.7603 16.5264V16.5266C32.7603 20.8611 32.7373 21.4022 32.661 23.109C32.6343 24.4361 32.3842 25.7455 31.9176 26.9875C31.5063 28.048 30.8784 29.0112 30.0741 29.8155C29.2697 30.6199 28.3066 31.2477 27.246 31.659C26.0045 32.1241 24.6931 32.3755 23.3675 32.4024C21.6732 32.5 21.1178 32.5 16.7852 32.5C12.4525 32.5 11.9114 32.4769 10.2028 32.4024C8.87453 32.3587 7.56348 32.0887 6.32608 31.604C5.2652 31.1934 4.30164 30.566 3.49695 29.762C2.69227 28.9579 2.06416 27.9948 1.65276 26.9342C1.18613 25.6905 0.935968 24.3811 0.909354 23.054C0.809998 21.3561 0.809998 20.8043 0.809998 16.4716C0.809998 12.1372 0.833063 11.596 0.909354 9.88922C0.935284 8.56358 1.18667 7.25203 1.65276 6.01076C2.06301 4.94981 2.69051 3.98634 3.495 3.18215C4.29949 2.37797 5.2632 1.75083 6.3243 1.34098C7.56406 0.873655 8.87456 0.621635 10.1992 0.595808C11.8936 0.5 12.4489 0.5 16.7816 0.5C21.1143 0.5 21.6554 0.521291 23.364 0.595808C24.6897 0.623027 26.0011 0.874996 27.2425 1.34098C28.3033 1.75131 29.2668 2.37862 30.0712 3.18274ZM29.2012 25.9176C29.5549 24.9582 29.7416 23.9452 29.753 22.9227V22.9245H29.7725C29.8488 21.2283 29.8488 20.7635 29.8488 16.4415C29.8488 12.1177 29.8293 11.6439 29.753 9.95664C29.7365 8.94562 29.5499 7.94458 29.2012 6.99545C28.9346 6.30541 28.5267 5.67872 28.0036 5.15563C27.4805 4.63254 26.8538 4.22459 26.1637 3.95797C25.2152 3.60503 24.2128 3.41836 23.2008 3.40619C21.4851 3.30861 21.0415 3.3086 16.7177 3.3086C12.3939 3.3086 11.9202 3.3299 10.2329 3.40619C9.22166 3.42032 8.22023 3.60692 7.27174 3.95797C5.87187 4.49379 4.76298 5.59559 4.22184 6.99545C3.86816 7.95428 3.68152 8.96666 3.67005 9.98858C3.57602 11.7078 3.57602 12.1496 3.57602 16.4734C3.57602 20.7954 3.59376 21.2709 3.67005 22.9564C3.68658 23.9674 3.87311 24.9685 4.22184 25.9176C4.48946 26.6089 4.8992 27.2363 5.42457 27.7592C5.94994 28.2821 6.57924 28.6889 7.27174 28.9533C8.21976 29.3061 9.22149 29.4927 10.2329 29.5051C11.9504 29.6027 12.3922 29.6027 16.7177 29.6027C21.0398 29.6027 21.5153 29.5832 23.2008 29.5051C24.2127 29.492 25.2149 29.3054 26.1637 28.9533C26.8538 28.6873 27.4806 28.2797 28.0037 27.7569C28.5269 27.2341 28.9348 26.6076 29.2012 25.9176ZM25.3015 9.86791C26.3578 9.86791 27.2141 9.01161 27.2141 7.95529C27.2141 6.89898 26.3578 6.04268 25.3015 6.04268C24.2452 6.04268 23.3889 6.89898 23.3889 7.95529C23.3889 9.01161 24.2452 9.86791 25.3015 9.86791ZM16.7727 8.25693C14.5969 8.25693 12.5102 9.12129 10.9716 10.6598C9.43304 12.1984 8.56869 14.2851 8.56869 16.461C8.56869 18.6368 9.43304 20.7235 10.9716 22.2621C12.5102 23.8007 14.5969 24.665 16.7727 24.665C18.9486 24.665 21.0353 23.8007 22.5739 22.2621C24.1124 20.7235 24.9768 18.6368 24.9768 16.461C24.9768 14.2851 24.1124 12.1984 22.5739 10.6598C21.0353 9.12129 18.9486 8.25693 16.7727 8.25693ZM16.7727 21.789C15.3592 21.789 14.0035 21.2275 13.004 20.2279C12.0045 19.2284 11.4429 17.8727 11.4429 16.4592C11.4429 15.0456 12.0045 13.69 13.004 12.6905C14.0035 11.6909 15.3592 11.1294 16.7727 11.1294C18.1863 11.1294 19.5419 11.6909 20.5415 12.6905C21.541 13.69 22.1025 15.0456 22.1025 16.4592C22.1025 17.8727 21.541 19.2284 20.5415 20.2279C19.5419 21.2275 18.1863 21.789 16.7727 21.789Z"
+            />
+          </svg>
+          <p>Instagram</p>
+        </a>
+        <a href="https://www.linkedin.com/in/franco-navarro-b08632219/" target="_blank">
+          <svg
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.46539 4.35254C8.46539 6.48024 6.74055 8.20508 4.61285 8.20508C2.48515 8.20508 0.760315 6.48024 0.760315 4.35254C0.760315 2.22484 2.48515 0.5 4.61285 0.5C6.74055 0.5 8.46539 2.22484 8.46539 4.35254ZM12.1031 32.4983V11.1244H18.4735V14.0473H18.5633C19.449 12.3693 21.6147 10.5962 24.8457 10.5962C31.5753 10.5962 32.8149 15.021 32.8149 20.7787V32.5H26.1751V22.1045C26.1751 19.6271 26.1328 16.4384 22.7222 16.4384C19.2641 16.4384 18.7394 19.1394 18.7394 21.9284V32.4983H12.1031ZM7.9354 11.1244H1.28854V32.4983H7.9354V11.1244Z"
+            />
+          </svg>
+          <p>Linkedin</p>
+        </a>
+      </aside>
+      <small
+        >Copiright
+        <a href="https://github.com/Franco-Navarro" target="_blank" rel="noopener">Franco Navarro</a> 2022</small
+      >
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
