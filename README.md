@@ -1,12 +1,12 @@
-# El-Clima.
+# El-Clima
 
 Aplicacion Web que muestra los datos del clima actual y de los proximos 5 dias.
 
-## WebSite.
+## WebSite
 
 [El Clima](https://franco-navarro.github.io/El-Clima/).
 
-## Construido con 🛠️.
+## Construido con 🛠️
 
 [OpenWeather](https://openweathermap.org/) - Weather API para obtener datos.
 
