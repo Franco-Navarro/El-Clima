@@ -4,20 +4,32 @@
         $dayDate = d.querySelectorAll("#day-date");
     let date = new Date(),
         months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+        weekday = ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
         actuallyMonth = date.getMonth(),
-        actuallyDay = (date.getDate()),
+        actuallyDay = date.getDate(),
+        actuallyweekday = date.getDay(),
         lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
         i = 1,
         j = 1;
 
-    $todayDate.innerHTML = months[actuallyMonth] + " " + actuallyDay;
+    $todayDate.innerHTML = weekday[actuallyweekday] + ", " + actuallyDay + " de " + months[actuallyMonth];
     $dayDate.forEach($dayDate => {
         if(actuallyDay + i <= lastDay){
-            $dayDate.innerHTML = months[actuallyMonth] + " " + (actuallyDay + i);
+            if((actuallyweekday + i) <= 6) {
+                $dayDate.innerHTML = weekday[actuallyweekday + i] + ", " + (actuallyDay + i) + " de " + months[actuallyMonth];
+            }
+            else {
+                $dayDate.innerHTML = weekday[actuallyweekday + i-7] + ", " + (actuallyDay + i) + " de " + months[actuallyMonth];
+            }
             i++;
         }
-        else if(actuallyDay + i > lastDay) {
-            $dayDate.innerHTML = months[actuallyMonth + 1] + " " + j;
+        else {
+            if((actuallyweekday + j) <= 6) {
+                $dayDate.innerHTML = weekday[actuallyweekday + j] + ", " + j + " de " + months[actuallyMonth + 1];
+            }
+            else {
+                $dayDate.innerHTML = weekday[actuallyweekday + j - 6] + ", " + j + " de " + months[actuallyMonth + 1];
+            }
             j++;
         }
         
@@ -141,11 +153,13 @@ async function updateData(lat,lon) {
     $pressure = document.querySelector("#today-pressure"),
     $humidity = document.querySelector("#today-humidity"),
     $wind = document.querySelector("#today-wind"),
+    $dew = document.querySelector("#today-dew"),
     $uvi = document.querySelector("#today-uvi");
-
+    
     let res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=sp&exclude=minutely,hourly,alerts&units=metric&appid=4d8fb5b93d4af21d66a2948710284366`),
     json = await res.json(),
     i = 1;
+    
     try {
         if(!res.ok) throw{status:res.status,statusText:res.statusText};
         // Parametros del dia de hoy
@@ -158,6 +172,7 @@ async function updateData(lat,lon) {
         $humidity.innerHTML = json.current.humidity + "%";
         $uvi.innerHTML = uvScale(Math.round(json.current.uvi));
         $wind.innerHTML = windDirection(json.current.wind_deg, json.current.wind_speed);
+        $dew.innerHTML = json.current.dew_point + "º C";
         // Tarjetas de los proximos 5 dias
         $dayMinMax.forEach($dayMinMax => {
             $dayMinMax.innerHTML = `Min ${Math.round(json.daily[i].temp.min)}º / ${Math.round(json.daily[i].temp.max)}º Max`;
@@ -187,10 +202,11 @@ async function searchLocation(name) {
             $noLocation.classList.remove("hidden");
             setTimeout(()=>{$noLocation.classList.add("hidden");},3000);
         } else{
+            country = countryCode.find(country => country[0] === json[0].country);
             updateData(json[0].lat,json[0].lon);
             $searchInput.value = ""
             $searchInput.placeholder = "Buscar Localizacion"
-            $actuallyLocation.innerHTML = json[0].local_names.es + " / " +   json[0].country ;
+            $actuallyLocation.innerHTML = json[0].local_names.es + " / " +   country[1] ;
         }
     }
     catch(err){
